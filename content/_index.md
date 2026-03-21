@@ -1,4 +1,5 @@
 ---
+cover: "/images/1.png"
 # Leave the homepage title empty to use the site title
 title: ''
 summary: ''

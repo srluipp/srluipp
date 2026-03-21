@@ -1,6 +1,7 @@
 ---
 title: 'Projects'
-date: 2024-05-19
+date: 2023-10-26
+image: /content/projects/solar-system-formation/assets/1.png
 type: landing
 
 design:
@@ -11,15 +12,15 @@ design:
 sections:
   - block: collection
     content:
-      title: Selected Projects
-      text: I enjoy making things. Here are a selection of projects that I have worked on over the years.
+      title: Мои проекты
+      text: Учебные проекты по математическому моделированию
       filters:
         folders:
           - projects
     design:
       view: article-grid
-      fill_image: false
-      columns: 3
+      fill_image: true
+      columns: 2
       show_date: false
       show_read_time: false
       show_read_more: false

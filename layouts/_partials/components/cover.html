@@ -1,0 +1,20 @@
+{{- /* 
+  cover.html — переопределение для HugoBlox Kit (v0.0.0-20260219...)
+  Fixes: "can't evaluate field MediaType in type template.HTML"
+  Uses safe path.Ext() instead of .MediaType
+*/ -}}
+
+{{- $coverPath := partial "functions/get_cover_image.html" . -}}
+{{- $ext := path.Ext $coverPath -}}
+{{- $isImage := or (eq $ext ".jpg") (eq $ext ".jpeg") (eq $ext ".png") (eq $ext ".webp") (eq $ext ".gif") (eq $ext ".avif") -}}
+
+<div class="cover-image{{ if $isImage }} has-image{{ else }} has-fallback{{ end }}" 
+     style="{{ if $isImage }}background-image: url('{{ $coverPath }}');{{ else }}background-image: url('/images/1.png');{{ end }}">
+  {{- if .Params.title -}}
+    <h1 class="cover-title">{{ .Params.title }}</h1>
+  {{- end -}}
+  {{- if .Params.subtitle -}}
+    <p class="cover-subtitle">{{ .Params.subtitle }}</p>
+  {{- end -}}
+</div>
+

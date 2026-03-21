@@ -1,0 +1,49 @@
+{{- /*
+  Safe get_cover_image.html for HugoBlox Kit (Hugo < 0.120 compatible)
+  Handles:
+    - cover: "/images/x.jpg" (string)
+    - cover: { image: "https://..." } (map)
+    - cover: {} or nil → fallback to /images/1.png
+*/ -}}
+
+{{- $cover := .Params.cover -}}
+
+{{- if not $cover -}}
+  {{- "/images/1.png" -}}
+{{- else -}}
+
+  {{- /* Check if cover is a string: try to convert to string and compare with original */ -}}
+  {{- $coverStr := printf "%v" $cover -}}
+  {{- $coverIsString := eq $cover $coverStr -}}
+
+  {{- if $coverIsString -}}
+    {{- /* It's a string — check if it's Unsplash */ -}}
+    {{- if hasPrefix $cover "https://images.unsplash.com/" -}}
+      {{- "/images/1.png" -}}
+    {{- else -}}
+      {{- $cover -}}
+    {{- end -}}
+
+  {{- else -}}
+    {{- /* It's not a string — assume it's a map. Try to extract .image */ -}}
+    {{- $image := "" -}}
+    {{- range $key, $val := $cover -}}
+      {{- if eq $key "image" -}}
+        {{- $image = $val -}}
+      {{- end -}}
+    {{- end -}}
+
+    {{- if $image -}}
+      {{- if hasPrefix $image "https://images.unsplash.com/" -}}
+        {{- "/images/1.png" -}}
+      {{- else -}}
+        {{- $image -}}
+      {{- end -}}
+    {{- else -}}
+      {{- "/images/1.png" -}}
+    {{- end -}}
+
+  {{- end -}}
+
+{{- end -}}
+

@@ -13,7 +13,24 @@
     "@tailwindcss/cli": "^4.1.12",
     "@tailwindcss/typography": "^0.5.10",
     "pagefind": "^1.4.0",
-    "preact": "^10.27.2",
-    "tailwindcss": "^4.1.12"
+    "preact": "^10.27.2"
+  },
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/srluipp/srluipp.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/srluipp/srluipp/issues"
+  },
+  "homepage": "https://github.com/srluipp/srluipp#readme",
+  "devDependencies": {
+    "autoprefixer": "^10.4.27",
+    "postcss": "^8.5.8",
+    "tailwindcss": "^4.2.2"
   }
 }
